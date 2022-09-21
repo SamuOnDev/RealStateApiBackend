@@ -8,7 +8,7 @@
 
 
 --- 
-## Technology
+## Used Technologies
 
 - .NET 6
 - Entity Framwork
