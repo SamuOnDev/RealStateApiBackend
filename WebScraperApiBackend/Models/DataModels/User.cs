@@ -3,6 +3,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace WebScraperApiBackend.Models.DataModels
 {
+    public enum Role
+    {
+        User,
+        Premium,
+        Administrator
+    }
+
     public class User : BaseEntity
     {
 
@@ -14,6 +21,9 @@ namespace WebScraperApiBackend.Models.DataModels
 
         [Required, StringLength(50)]
         public string LastName { get; set; } = string.Empty;
+
+        [Required, EmailAddress]
+        public string Email { get; set; } = string.Empty;
 
         [Required, PasswordPropertyText]
         public string Password { get; set; } = string.Empty;

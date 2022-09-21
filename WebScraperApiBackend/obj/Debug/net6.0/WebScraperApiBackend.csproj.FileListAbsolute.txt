@@ -261,3 +261,5 @@ G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\refint\WebScraperA
 G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\WebScraperApiBackend.pdb
 G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\WebScraperApiBackend.genruntimeconfig.cache
 G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\ref\WebScraperApiBackend.dll
+G:\WebScraperApiBackend\WebScraperApiBackend\bin\Debug\net6.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+G:\WebScraperApiBackend\WebScraperApiBackend\bin\Debug\net6.0\Microsoft.IdentityModel.Abstractions.dll
