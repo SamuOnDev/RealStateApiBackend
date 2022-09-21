@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "AsUAejbr9scHe2MtBlBnBTfMJXy9mPg7J/QqVANM23w=",
+  "Source": "WebScraperApiBackend",
+  "BasePath": "_content/WebScraperApiBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

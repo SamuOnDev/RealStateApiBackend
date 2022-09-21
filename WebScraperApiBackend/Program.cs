@@ -1,4 +1,15 @@
+using Microsoft.EntityFrameworkCore;
+using WebScraperApiBackend.DataAcces;
+
 var builder = WebApplication.CreateBuilder(args);
+
+// SQL Conection
+const string CONNECTIONNAME = "ScraperDB";
+var connectionString = builder.Configuration.GetConnectionString(CONNECTIONNAME);
+
+// DB Context
+builder.Services.AddDbContext<ScraperDBContext>(options => options.UseSqlServer(connectionString));
+
 
 // Add services to the container.
 
