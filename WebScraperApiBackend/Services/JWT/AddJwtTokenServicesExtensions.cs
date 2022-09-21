@@ -2,21 +2,21 @@
 using Microsoft.IdentityModel.Tokens;
 using WebScraperApiBackend.Models.DataModels;
 
-namespace WebScraperApiBackend.Services
+namespace WebScraperApiBackend.Services.JWT
 {
     public static class AddJwtTokenServicesExtensions
     {
         public static void AddJwtTokenServices(this IServiceCollection Services, IConfiguration Configuration)
-        {           
+        {
             var bindJwtSettings = new JwtSettings();
             Configuration.Bind("JsonWebTokenKeys", bindJwtSettings);
-            
+
             Services.AddSingleton(bindJwtSettings);
 
             Services
                 .AddAuthentication(options =>
                 {
-                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme; 
+                    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
                 })
                 .AddJwtBearer(options =>

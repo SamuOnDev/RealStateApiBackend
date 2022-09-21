@@ -4,7 +4,7 @@ using Microsoft.OpenApi.Models;
 using System.Net;
 using System.Security.Claims;
 using WebScraperApiBackend.DataAcces;
-using WebScraperApiBackend.Services;
+using WebScraperApiBackend.Services.JWT;
 
 var builder = WebApplication.CreateBuilder(args);
 

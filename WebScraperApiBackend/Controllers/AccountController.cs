@@ -28,7 +28,7 @@ namespace WebScraperApiBackend.Controllers
                 var Token = new UserToken();
 
                 var searchUser = (from user in _context.Users
-                                  where user.Name == userLogin.UserName && user.Password == userLogin.Password
+                                  where user.Email == userLogin.UserEmail && user.Password == userLogin.Password
                                   select user).FirstOrDefault(); 
 
                 if (searchUser != null)
