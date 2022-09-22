@@ -2,7 +2,7 @@
 {
     public interface IUserService
     {
-        bool CheckIfUserNameExists(string UserName);
-        bool CheckIfEmailExists(string Email);
+        bool CheckIfUserNameExist(string UserName);
+        bool CheckIfEmailExist(string Email);
     }
 }

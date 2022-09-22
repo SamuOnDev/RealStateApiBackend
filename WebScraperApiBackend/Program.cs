@@ -5,6 +5,7 @@ using System.Net;
 using System.Security.Claims;
 using WebScraperApiBackend.DataAcces;
 using WebScraperApiBackend.Services.JWT;
+using WebScraperApiBackend.Services.User;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +28,10 @@ builder.Services.AddAuthorization(options =>
 // Add services to the container.
 
 builder.Services.AddControllers();
+
+// Custom Services
+builder.Services.AddScoped<IUserService, UserService>();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 // Config Swagger to take care of Autorization of JWT
@@ -45,7 +50,7 @@ builder.Services.AddSwaggerGen( options =>
     options.AddSecurityRequirement(new OpenApiSecurityRequirement 
     {
         {
-            new OpenApiSecurityScheme // Especificamos el esquema de seguridad
+            new OpenApiSecurityScheme
                 {
                     Reference = new OpenApiReference
                     {
@@ -55,6 +60,16 @@ builder.Services.AddSwaggerGen( options =>
                 },
             new string[]{}
         }
+    });
+});
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "CorsPolicy", builder => 
+    {
+        builder.AllowAnyOrigin();
+        builder.AllowAnyMethod();
+        builder.AllowAnyHeader();
     });
 });
 
@@ -72,5 +87,7 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseCors("CorsPolicy");
 
 app.Run();

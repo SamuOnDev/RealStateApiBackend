@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebScraperApiBackend.DataAcces;
 using WebScraperApiBackend.Models.DataModels;
+using WebScraperApiBackend.Services.User;
 
 namespace WebScraperApiBackend.Controllers
 {
@@ -15,10 +16,12 @@ namespace WebScraperApiBackend.Controllers
     public class UsersController : ControllerBase
     {
         private readonly ScraperDBContext _context;
+        private readonly IUserService _userService;
 
-        public UsersController(ScraperDBContext context)
+        public UsersController(ScraperDBContext context, IUserService userService)
         {
             _context = context;
+            _userService = userService;
         }
 
         // GET: api/Users
@@ -78,6 +81,16 @@ namespace WebScraperApiBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
+            bool Existe = _userService.CheckIfUserNameExist(user.UserName);
+            if (Existe)
+            {              
+                return BadRequest("UserName already in Use");
+            }
+            else if (_userService.CheckIfEmailExist(user.Email))
+            {
+                return BadRequest("Email already in Use");
+            }
+
             _context.Users.Add(user);
             await _context.SaveChangesAsync();
 
