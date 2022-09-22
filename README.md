@@ -19,4 +19,5 @@
 
 ---
 
-- Comprobación si el usuario existe o no a la hora de enviar un POST con un usuario nuevo registrado
+- Comprobación si el UserName existe cuando se envia un POST
+- Comprobación si el Email existe cuando se envia un POST
