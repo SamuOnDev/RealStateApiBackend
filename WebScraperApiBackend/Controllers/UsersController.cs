@@ -1,11 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebScraperApiBackend.DataAcces;
+using WebScraperApiBackend.DTO;
 using WebScraperApiBackend.Models.DataModels;
 using WebScraperApiBackend.Services.User;
 
@@ -25,21 +29,32 @@ namespace WebScraperApiBackend.Controllers
         }
 
         // GET: api/Users
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
-        {
-            return await _context.Users.ToListAsync();
-        }
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        //{
+        //    return await _context.Users.ToListAsync();
+        //}
 
         // GET: api/Users/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
+        public async Task<IQueryable<UserDataDTO>> GetUser(int id)
+        //public async Task<ActionResult<User>> GetUser(int id)
         {
-            var user = await _context.Users.FindAsync(id);
+            // var user = await _context.Users.FindAsync(id);
+
+            var user = from User in _context.Users
+                       where User.Id.Equals(id)
+                       select new UserDataDTO()
+                       {
+                           UserName = User.UserName,
+                           FullName = User.Name + " " + User.LastName,
+                           Email = User.Email
+                       };
 
             if (user == null)
             {
-                return NotFound();
+                return (IQueryable<UserDataDTO>)NotFound("User not found");
             }
 
             return user;
@@ -48,6 +63,7 @@ namespace WebScraperApiBackend.Controllers
         // PUT: api/Users/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "User")]
         public async Task<IActionResult> PutUser(int id, User user)
         {
             if (id != user.Id)
@@ -81,8 +97,7 @@ namespace WebScraperApiBackend.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            bool Existe = _userService.CheckIfUserNameExist(user.UserName);
-            if (Existe)
+            if (_userService.CheckIfUserNameExist(user.UserName))
             {              
                 return BadRequest("UserName already in Use");
             }
@@ -99,6 +114,7 @@ namespace WebScraperApiBackend.Controllers
 
         // DELETE: api/Users/5
         [HttpDelete("{id}")]
+        [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "Administrator")]
         public async Task<IActionResult> DeleteUser(int id)
         {
             var user = await _context.Users.FindAsync(id);

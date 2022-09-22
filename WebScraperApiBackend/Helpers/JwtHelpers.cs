@@ -21,6 +21,7 @@ namespace WebScraperApiBackend.Helpers
             if (userAccount.UserRole == Role.Administrator)
             {
                 claims.Add(new Claim(ClaimTypes.Role, "Administrator"));
+                claims.Add(new Claim(ClaimTypes.Role, "User"));
             }
             else if (userAccount.UserRole == Role.User || userAccount.UserRole == Role.Premium)
             {
@@ -71,6 +72,7 @@ namespace WebScraperApiBackend.Helpers
                 userToken.UserName = model.UserName;
                 userToken.Id = model.Id;
                 userToken.GuidId = model.GuidId;
+                userToken.UserRole = model.UserRole;
 
                 return userToken;
             }

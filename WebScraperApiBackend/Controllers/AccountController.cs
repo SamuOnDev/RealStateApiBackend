@@ -35,9 +35,10 @@ namespace WebScraperApiBackend.Controllers
                 {
                     Token = JwtHelpers.GenTokenKey(new UserToken()
                     {
-                        UserName = searchUser.Name,
+                        UserName = searchUser.UserName,
                         EmailId = searchUser.Email,
                         Id = searchUser.Id,
+                        UserRole = searchUser.UserRole,
                         GuidId = Guid.NewGuid(),
                     }, _jwtSettings);
                 }
