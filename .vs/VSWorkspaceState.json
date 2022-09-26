@@ -1,0 +1,10 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\WebScraperApiBackend",
+    "\\WebScraperApiBackend\\FakeJson",
+    "\\WebScraperApiBackend\\Helpers"
+  ],
+  "SelectedNode": "\\WebScraperApiBackend\\Helpers\\JwtHelpers.cs",
+  "PreviewInSolutionExplorer": false
+}
