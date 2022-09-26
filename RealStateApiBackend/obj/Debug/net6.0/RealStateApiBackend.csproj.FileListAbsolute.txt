@@ -264,6 +264,7 @@ G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\refint\RealStateAp
 G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\RealStateApiBackend.pdb
 G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\RealStateApiBackend.genruntimeconfig.cache
 G:\WebScraperApiBackend\WebScraperApiBackend\obj\Debug\net6.0\ref\RealStateApiBackend.dll
+<<<<<<< HEAD
 G:\RealStateApiBackend\RealStateApiBackend\bin\Debug\net6.0\appsettings.Development.json
 G:\RealStateApiBackend\RealStateApiBackend\bin\Debug\net6.0\appsettings.json
 G:\RealStateApiBackend\RealStateApiBackend\bin\Debug\net6.0\FakeJson\RealStateFAKE.json
@@ -530,3 +531,5 @@ G:\RealStateApiBackend\RealStateApiBackend\obj\Debug\net6.0\refint\RealStateApiB
 G:\RealStateApiBackend\RealStateApiBackend\obj\Debug\net6.0\RealStateApiBackend.pdb
 G:\RealStateApiBackend\RealStateApiBackend\obj\Debug\net6.0\RealStateApiBackend.genruntimeconfig.cache
 G:\RealStateApiBackend\RealStateApiBackend\obj\Debug\net6.0\ref\RealStateApiBackend.dll
+=======
+>>>>>>> 04dd3f060b6961622b916f6434925dd7daa95225

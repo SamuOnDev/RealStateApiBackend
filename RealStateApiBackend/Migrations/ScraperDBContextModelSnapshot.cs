@@ -22,6 +22,7 @@ namespace RealStateApiBackend.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
+<<<<<<< HEAD
             modelBuilder.Entity("RealStateApiBackend.Models.DataModels.House", b =>
                 {
                     b.Property<int>("Id")
@@ -80,6 +81,8 @@ namespace RealStateApiBackend.Migrations
                     b.ToTable("Houses");
                 });
 
+=======
+>>>>>>> 04dd3f060b6961622b916f6434925dd7daa95225
             modelBuilder.Entity("RealStateApiBackend.Models.DataModels.User", b =>
                 {
                     b.Property<int>("Id")
